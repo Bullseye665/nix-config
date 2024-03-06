@@ -1,4 +1,4 @@
-{ plasma-manager, ... }: {
+{ plasma-manager, username, ... }: {
   home-manager.users.${username} = {
     imports = [ plasma-manager.homeManagerModules.plasma-manager ];
 
