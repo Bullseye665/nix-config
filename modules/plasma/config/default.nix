@@ -1,5 +1,7 @@
-{ plasma-manager, ... }:
-{
+{ plasma-manager, ... }: {
+  home-manager.users.${username} = {
+    imports = [ plasma-manager.homeManagerModules.plasma-manager ]; };
+
   programs.plasma = {
     enable = true;
     shortcuts = {
