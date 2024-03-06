@@ -37,10 +37,10 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-   #     plasma-manager = {
-   #   url = "github:pjones/plasma-manager";
-   #   inputs.nixpkgs.follows = "nixpkgs";
-   # };
+        plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
    # nix-gaming = {
    #   url = "github:fufexan/nix-gaming";
