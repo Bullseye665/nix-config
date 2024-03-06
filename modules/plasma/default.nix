@@ -1,8 +1,7 @@
 { pkgs, ... }:  # plasma-manager,
 {
   imports = [
-#    plasma-manager.homeManagerModules.plasma-manager
-#    ./config
+    ./config
     ./kate
     ./partition-manager
    # ./kcm-grub2
