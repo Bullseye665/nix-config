@@ -1,0 +1,50 @@
+{ config, pkgs, home-manager, username, ... }: {
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  services.spice-vdagentd.enable = true;
+
+  users.users.${username}.extraGroups = [ "libvirtd" ];
+
+  environment.systemPackages = with pkgs; [
+    spice
+    spice-gtk
+    spice-protocol
+    virt-viewer
+    virtio-win
+    win-spice
+    looking-glass-client
+    virtiofsd
+  ];
+
+  programs.virt-manager.enable = true;
+
+  home-manager.users.${username} = {
+    dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
+    };
+  };
+}
+
+#    dconf.settings = {
+#      "org/virt-manager/virt-manager/connections" = {
+#        autoconnect = [ "qemu:///system" ];
+#        uris = [ "qemu:///system" ];
+#      };
+#    };
+#  };
+#  Enable dconf (System Management Tool)
+#  programs.dconf.enable = true;
+#}
