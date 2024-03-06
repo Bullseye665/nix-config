@@ -1,6 +1,6 @@
 { plasma-manager, ... }: {
   home-manager.users.${username} = {
-    imports = [ plasma-manager.homeManagerModules.plasma-manager ]; };
+    imports = [ plasma-manager.homeManagerModules.plasma-manager ];
 
   programs.plasma = {
     enable = true;
@@ -1116,6 +1116,7 @@
       "plasmarc"."Theme"."name" = "Monochrome";
       "plasmarc"."Wallpapers"."usersWallpapers" = "/nix/store/mksd7zsz91jk88n36pcr0m8cacm9fp5r-plasma-workspace-wallpapers-5.27.10/share/wallpapers/Kay/";
       "systemsettingsrc"."KFileDialog Settings"."detailViewIconSize" = 16;
+      };
     };
   };
 }
