@@ -16,14 +16,14 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/81011f40-1f31-44d6-bcaf-1a0ebe8e3ffe";
+    { device = "/dev/disk/by-uuid/68315290-6c6e-4491-b283-105cb4629ec5";
       fsType = "ext4";
     };
 
-  fileSystems."/run/media/person/Seagate Expansion Drive" =
-    { device = "/dev/sda2";
-      fsType = "ntfs3";
-    };
+#  fileSystems."/run/media/person/Seagate Expansion Drive" =
+#    { device = "/dev/sda2";
+#     fsType = "ntfs3";
+#    };
 
   fileSystems."/run/media/person/Samsung 980" =
     { device = "/dev/nvme0n1p1";
@@ -35,15 +35,10 @@
 #      fsType = "ext4";
 #    };
 
-#  fileSystems."/boot" =
-#    { device = "systemd-1";
-#      fsType = "autofs";
-#    };
-
-#  fileSystems."/boot" =
-#    { device = "/dev/disk/by-uuid/C80D-CE4F";
-#      fsType = "vfat";
-#    };
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/48A8-D949";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
