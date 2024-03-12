@@ -107,10 +107,11 @@
             inherit system;
           } // attrs;
           modules = [
-            ./minimal.nix
-            ./modules/hardware/network
-            ./modules/plasma
+            ./minimum.nix
             ./modules/apps
+            ./modules/hardware
+            ./modules/hyprland
+            ./modules/virt
           ];
         }; # Laptop
 
