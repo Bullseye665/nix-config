@@ -6,26 +6,27 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot = {
-    initrd = {
-      availableKernelModules =
-        [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-      kernelModules = [ ];
-      luks.devices."luks-a1d238f2-3099-4628-b030-4f76a17f24b9".device =
-        "/dev/disk/by-uuid/a1d238f2-3099-4628-b030-4f76a17f24b9";
-    };
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
-  };
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1e04dc47-32e5-40ec-b78f-f5873c6b3a4e";
-    fsType = "ext4";
-  };
+  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F633-2908";
-    fsType = "vfat";
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/aee5133d-7719-48bf-b238-415472472ca0";
+      fsType = "ext4";
+    };
+
+#  fileSystems."/run/media/laptop/9106417c-ff60-4a7d-b451-2bd90e56277a" =
+#    { device = "/dev/sda1";
+#      fsType = "ext4";
+#    };
+
+  boot.initrd.luks.devices."luks-41f579db-faec-45f7-a0c8-861f857c0e34".device = "/dev/disk/by-uuid/41f579db-faec-45f7-a0c8-861f857c0e34";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/5CCA-3578";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
@@ -34,10 +35,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp170s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
