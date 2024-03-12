@@ -2,8 +2,8 @@
 {
   imports = [
     ./config
-    ./kate
-    ./partition-manager
+#    ./kate
+#    ./partition-manager
    # ./kcm-grub2
   ];
 
@@ -12,11 +12,15 @@
     displayManager = {
       sddm.enable = true;
 #      defaultSession = "plasmawayland";
+      lightdm.greeters.gtk.enable = false;
     };
-    desktopManager.plasma5.enable = true;
+    desktopManager = {
+      plasma5.enable = false;
+      plasma6.enable = true;
+    };
   };
-
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+                  # 5
+  environment.plasma6.excludePackages = with pkgs.libsForQt5; [
     elisa
     oxygen
     khelpcenter

@@ -9,7 +9,7 @@
   ./hardware
   ./hyprland
 #  ./plasma
-#  ./ssh
+  ./ssh
   ./tailscale
 #  ./virt
 ]; }
