@@ -3,6 +3,7 @@
    environment.systemPackages = with pkgs; [
     alacritty     # Terminal
     btop          # resource monitor
+    lf
 #    nitch         # System fetch
     pavucontrol   # PulseAudio Volume Control
     playerctl     # Command-line media player controller

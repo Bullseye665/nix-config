@@ -2,7 +2,6 @@
 {
    environment.systemPackages = with pkgs; [
     discord
-    firefox #*
     flatpak
     gnomeExtensions.settingscenter  # Nvidia Settings center
     gnome.gnome-software  # Flatpak installer
@@ -12,7 +11,6 @@
     neofetch
     protonup-qt
     protontricks
-    thunderbird
     vlc
     zsh
 

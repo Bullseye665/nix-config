@@ -67,7 +67,7 @@
 
    # flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
 
-   # nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 #    hardware.url = "github:nixos/nixos-hardware";
   };
 
@@ -107,6 +107,7 @@
             inherit system;
           } // attrs;
           modules = [
+            nixos-hardware.nixosModules.framework-11th-gen-intel
             ./minimum.nix
             ./modules/apps
             ./modules/hardware
