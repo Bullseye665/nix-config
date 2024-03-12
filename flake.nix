@@ -37,7 +37,7 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-        plasma-manager = {
+    plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -49,11 +49,6 @@
 
 #    nurpkgs = {
 #      url = github:nix-community/NUR;
-#      inputs.nixpkgs.follows = "nixpkgs";
-#    };
-
-#    nix-gaming = {
-#      url = "github:fufexan/nix-gaming";
 #      inputs.nixpkgs.follows = "nixpkgs";
 #    };
 
@@ -90,6 +85,7 @@
           specialArgs = {
             username = "person";
             hostName = "nixos";
+            version = "24.05"; #24.05
             hyprlandConfig = "desktop";
             inherit system;
           } // attrs;
@@ -106,6 +102,7 @@
           specialArgs = {
             username = "laptop";
             hostName = "nixos";
+            version = "23.11";
             hyprlandConfig = "laptop";
             inherit system;
           } // attrs;
@@ -123,6 +120,7 @@
           specialArgs = {
             username = "personb";
             hostName = "nixos";
+            version = "23.11";
             inherit system;
           } // attrs;
           modules = [
@@ -138,6 +136,7 @@
             username = "live-image";
             hostName = "live";
             hyprlandConfig = "laptop";
+            version = "23.11";
             inherit system;
           } // attrs;
           modules = [ ./minimal.nix ];
@@ -149,6 +148,7 @@
           specialArgs = {
             username = "winix";
             hostName = "eriim";
+            version = "23.11";
             inherit system;
           } // attrs;
           modules = [ ./wsl.nix ];
@@ -160,6 +160,7 @@
           specialArgs = {
             username = "virtualis";
             hostName = "eriim";
+            version = "23.11";
             inherit system;
           } // attrs;
           modules = [ ./minimal.nix ];
