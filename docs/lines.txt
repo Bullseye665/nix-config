@@ -1,0 +1,414 @@
+# still uses configuration and home file
+. #file
+├── core         # Baseline configurations applicable to all machines
+├── dev          # Developer tooling configuration
+├── graphical    # Sway/i3 configuration for the desktop
+├── hardware     # Hardware-specific configuration
+├── hosts        # Machine definitions
+├── nix          # Nix build support files (overlays, deployment code)
+└── users        # Per-user configurations
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+# basic approach
+~/.dotfiles
+├── configuration.nix
+├── flake.lock
+├── flake.nix
+├── hardware-configuration.nix
+└── home.nix
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+~./nixflakes
+├── flake.lock
+├── flake.nix
+├── users
+│     ├─── eriim
+│     │     └─── default.nix
+│     ├─── nixos
+│     │     └─── default.nix
+│     ├─── person
+│     │     └─── default.nix
+│     └─── default.nix
+├── hosts
+│     ├─── internationalisation
+│     │     └─── default.nix
+│     ├─── live-image
+│     │     ├─── default.nix
+│     │     └─── virtualbox.nix
+│     ├─── nixos
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── nixosb
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── nixosl
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── virtualis
+│     │     └─── default.nix
+│     ├─── winix
+│     │     └─── default.nix
+│     └─── default.nix
+└── modules
+      ├─── agenix
+      │     └─── default.nix
+      ├─── apps
+      │     ├─── 1password
+      │     │     └─── default.nix
+      │     ├─── browser
+      │     │     └─── default.nix
+      │     ├─── cachix
+      │     │     ├─── cachix
+      │     │     │     └─── nix-gaming.nix
+      │     │     ├─── cachix.nix
+      │     │     └─── default.nix
+      │     ├─── gh
+      │     │     └─── default.nix
+      │     ├─── git
+      │     │     └─── default.nix
+      │     ├─── gpg
+      │     │     └─── default.nix
+      │     ├─── libreoffice
+      │     │     └─── default.nix
+      │     ├─── obs
+      │     │     └─── default.nix
+      │     ├─── obsidian
+      │     │     └─── default.nix
+      │     ├─── spotify
+      │     │     └─── default.nix
+      │     ├─── steam
+      │     │     └─── default.nix
+      │     ├─── transmission
+      │     │     └─── default.nix
+      │     ├─── vscode
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── core
+      │     ├─── boot
+      │     │     ├─── grub
+      │     │           └─── default.nix
+      │     │     └─── systemd
+      │     │           └─── default.nix
+      │     ├─── nix
+      │     │     └─── default.nix
+      │     ├─── pkgs
+      │     │     ├─── full
+      │     │     │     └─── default.nix
+      │     │     └─── minimum
+      │     │           └─── default.nix
+      │     ├─── security
+      │     │     ├─── gnupg
+      │     │     │     └─── default.nix
+      │     │     ├─── polkit
+      │     │     │     └─── default.nix
+      │     │     ├─── yubico
+      │     │     │     └─── default.nix
+      │     │     └─── default.nix
+      │     ├─── terminal
+      │     │     ├─── bash
+      │     │     │     └─── default.nix
+      │     │     ├─── cava
+      │     │     │     ├─── dots
+      │     │     │     │     └─── default.nix
+      │     │     │     └─── default.nix
+      │     │     ├─── fonts
+      │     │     │     ├─── MplusCodeNerdFont
+      │     │     │     │     ├─── default.nix
+      │     │     │     │     └─── M+1CodeNerdFont.ttf
+      │     │     │     └─── default.nix
+      │     │     ├─── foot
+      │     │     │     ├─── dots
+      │     │     │     │     └─── default.nix
+      │     │     │     └─── default.nix
+      │     │     ├─── kitty
+      │     │     │     ├─── dots
+      │     │     │     │     └─── default.nix
+      │     │     │     └─── default.nix
+      │     │     ├─── nvim
+      │     │     │     └─── default.nix
+      │     │     ├─── starship
+      │     │     │     └─── default.nix
+      │     │     ├─── tmux
+      │     │     │     └─── default.nix
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── eriixpkgs
+      │     ├─── go-time
+      │     │     └─── default.nix
+      │     ├─── homepage-nix
+      │     │     └─── default.nix
+      │     ├─── russh
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── garbage
+      │     └─── default.nix
+      ├─── gnome
+      │     └─── default.nix
+      ├─── hardware
+      │     ├─── bluetooth
+      │     │     └─── default.nix
+      │     ├─── network
+      │     │     └─── default.nix
+      │     ├─── nvidia
+      │     │     └─── default.nix
+      │     ├─── printer
+      │     │     └─── default.nix
+      │     ├─── sound
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── hyperland
+      │     ├─── config
+      │     │     ├─── default.nix
+      │     │     ├─── desktop.nix
+      │     │     └─── laptop.nix
+      │     ├─── greetd
+      │     │     └─── default.nix
+      │     ├─── mako
+      │     │     └─── default.nix
+      │     ├─── swaylock
+      │     │     ├─── default.nix
+      │     │     └─── nix-wallpaper-dracula.png
+      │     ├─── waybar
+      │     │     ├─── default.nix
+      │     │     ├─── desktop.nix
+      │     │     └─── laptop.nix
+      │     ├─── wofi
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── plasma
+      │     ├─── config
+      │     │     └─── default.nix
+      │     ├─── kate
+      │     │     └─── default.nix
+      │     ├─── kcm-grub2
+      │     │     └─── default.nix
+      │     ├─── partition-manager
+      │     │     └─── default.nix
+      │     └─── default.nix
+      ├─── ssh
+      │     └─── default.nix
+      ├─── tailscale
+      │     └─── default.nix
+      ├─── virt
+      │     ├─── default.nix
+      │     ├─── docker.nix
+      │     ├─── libvirt.nix
+      │     └─── podman.nix
+      └─── default.nix
+#docs and assets are left out
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+~./config
+├─── default.nix
+├─── flake.lock
+├─── flake.nix
+├─── minimal.nix
+├─── wsl.nix
+├─── home
+│     ├─── apps
+│     │     ├─── 1password
+│     │     │     └─── default.nix
+│     │     ├─── browser
+│     │     │     └─── default.nix
+│     │     ├─── cachix
+│     │     │     ├─── cachix
+│     │     │     │     └─── nix-gaming.nix
+│     │     │     ├─── cachix.nix
+│     │     │     └─── default.nix
+│     │     ├─── gh
+│     │     │     └─── default.nix
+│     │     ├─── git
+│     │     │     └─── default.nix
+│     │     ├─── gpg
+│     │     │     └─── default.nix
+│     │     ├─── libreoffice
+│     │     │     └─── default.nix
+│     │     ├─── obs
+│     │     │     └─── default.nix
+│     │     ├─── obsidian
+│     │     │     └─── default.nix
+│     │     ├─── spotify
+│     │     │     └─── default.nix
+│     │     ├─── steam
+│     │     │     └─── default.nix
+│     │     ├─── transmission
+│     │     │     └─── default.nix
+│     │     ├─── vscode
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── assets
+│     │     ├─── backgrounds
+│     │     │     └─── # nope
+│     │     └─── default.nix
+│     ├─── core
+│     │     ├─── pkgs
+│     │     │     ├─── full
+│     │     │     │     └─── default.nix
+│     │     │     └─── minimum
+│     │     │           └─── default.nix
+│     │     ├─── security
+│     │     │     ├─── gnupg
+│     │     │     │     └─── default.nix
+│     │     │     ├─── polkit
+│     │     │     │     └─── default.nix
+│     │     │     ├─── yubico
+│     │     │     │     └─── default.nix
+│     │     │     └─── default.nix
+│     │     ├─── terminal
+│     │     │     ├─── bash
+│     │     │     │     └─── default.nix
+│     │     │     ├─── cava
+│     │     │     │     ├─── dots
+│     │     │     │     │     └─── default.nix
+│     │     │     │     └─── default.nix
+│     │     │     ├─── direnv
+│     │     │     │     └─── default.nix
+│     │     │     ├─── fonts
+│     │     │     │     ├─── MplusCodeNerdFont
+│     │     │     │     │     ├─── default.nix
+│     │     │     │     │     └─── M+1CodeNerdFont.ttf
+│     │     │     │     └─── default.nix
+│     │     │     ├─── foot
+│     │     │     │     ├─── dots
+│     │     │     │     │     └─── default.nix
+│     │     │     │     └─── default.nix
+│     │     │     ├─── kitty
+│     │     │     │     ├─── dots
+│     │     │     │     │     └─── default.nix
+│     │     │     │     └─── default.nix
+│     │     │     ├─── nvim
+│     │     │     │     └─── default.nix
+│     │     │     ├─── starship
+│     │     │     │     └─── default.nix
+│     │     │     ├─── tmux
+│     │     │     │     └─── default.nix
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── desktop
+│     │     ├─── gnome
+│     │     │     └─── default.nix
+│     │     ├─── hyperland
+│     │     │     ├─── config
+│     │     │     │     ├─── default.nix
+│     │     │     │     ├─── desktop.nix
+│     │     │     │     └─── laptop.nix
+│     │     │     ├─── greetd
+│     │     │     │     └─── default.nix
+│     │     │     ├─── mako
+│     │     │     │     └─── default.nix
+│     │     │     ├─── swaylock
+│     │     │     │     ├─── default.nix
+│     │     │     │     └─── nix-wallpaper-dracula.png
+│     │     │     ├─── waybar
+│     │     │     │     ├─── default.nix
+│     │     │     │     ├─── desktop.nix
+│     │     │     │     └─── laptop.nix
+│     │     │     ├─── wofi
+│     │     │     │     └─── default.nix
+│     │     │     └─── default.nix
+│     │     ├─── plasma
+│     │     │     ├─── config
+│     │     │     │     └─── default.nix
+│     │     │     ├─── kate
+│     │     │     │     └─── default.nix
+│     │     │     ├─── kcm-grub2
+│     │     │     │     └─── default.nix
+│     │     │     ├─── partition-manager
+│     │     │     │     └─── default.nix
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── eriixpkgs
+│     │     ├─── go-time
+│     │     │     └─── default.nix
+│     │     ├─── homepage-nix
+│     │     │     └─── default.nix
+│     │     ├─── russh
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── users
+│     │     ├─── laptop.nix
+│     │     ├─── person.nix
+│     │     └─── personb.nix
+│     ├─── virt
+│     │     ├─── default.nix
+│     │     ├─── docker.nix
+│     │     ├─── libvirt.nix
+│     │     └─── podman.nix
+│     ├─── default.nix
+│     └─── home.nix
+├─── modules
+│     ├─── cachix
+│     │     ├─── cachix
+│     │     │     └─── nix-gaming.nix
+│     │     ├─── cachix.nix
+│     │     └─── default.nix
+│     ├─── core
+│     │     ├─── boot
+│     │     │     ├─── grub   # might be hardware ?
+│     │     │     │     └─── default.nix
+│     │     │     └─── systemd
+│     │     │           └─── default.nix
+│     │     ├─── config.nix
+│     │     └─── default.nix
+│     ├─── desktop
+│     │     ├─── gnome
+│     │     │     └─── default.nix
+│     │     ├─── hyperland
+│     │     │     └─── default.nix
+│     │     ├─── plasma
+│     │     │     ├─── config
+│     │     │     │     └─── default.nix
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── garbage
+│     │     └─── default.nix
+│     ├─── hardware
+│     │     ├─── bluetooth
+│     │     │     └─── default.nix
+│     │     ├─── network
+│     │     │     └─── default.nix
+│     │     ├─── nvidia
+│     │     │     └─── default.nix
+│     │     ├─── printer
+│     │     │     └─── default.nix
+│     │     ├─── sound
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── keys
+│     │     ├─── agenix
+│     │     │     └─── default.nix
+│     │     ├─── ssh
+│     │     │     └─── default.nix
+│     │     ├─── tailscale
+│     │     │     └─── default.nix
+│     │     └─── default.nix
+│     ├─── virt
+│     │     ├─── default.nix
+│     │     ├─── docker.nix
+│     │     ├─── libvirt.nix
+│     │     └─── podman.nix
+│     └─── default.nix
+└─── nix-config
+│     ├─── internationalisation
+│     │     └─── default.nix
+│     ├─── live-image
+│     │     ├─── default.nix
+│     │     └─── virtualbox.nix
+│     ├─── nixos
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── nixosb
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── nixosl
+│     │     ├─── default.nix
+│     │     └─── hardware-configuration.nix
+│     ├─── virtualis
+│     │     └─── default.nix
+│     ├─── winix
+│     │     └─── default.nix
+│     └─── default.nix
+# documents and sh are excluded
