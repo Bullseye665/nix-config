@@ -71,7 +71,7 @@
 #    hardware.url = "github:nixos/nixos-hardware";
     };
 
-  outputs = { self, nixpkgs, ... }@attrs:
+  outputs = { self, nixpkgs, nixos-hardware, ... }@attrs:
     let
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -107,7 +107,7 @@
             inherit system;
           } // attrs;
           modules = [
-            <nixos-hardware.nixosModules.framework-11th-gen-intel>
+            nixos-hardware/framework/13-inch/11th-gen-intel
             ./minimum.nix
             ./modules/apps
             ./modules/hardware
