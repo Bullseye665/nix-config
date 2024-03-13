@@ -42,10 +42,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   # nix-gaming = {
-   #   url = "github:fufexan/nix-gaming";
-   #   inputs.nixpkgs.follows = "nixpkgs";
-   # };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
 #    nurpkgs = {
 #      url = github:nix-community/NUR;
@@ -69,7 +69,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 #    hardware.url = "github:nixos/nixos-hardware";
-  };
+    };
 
   outputs = { self, nixpkgs, ... }@attrs:
     let
@@ -107,7 +107,7 @@
             inherit system;
           } // attrs;
           modules = [
-            nixos-hardware.nixosModules.framework-11th-gen-intel
+            <nixos-hardware.nixosModules.framework-11th-gen-intel>
             ./minimum.nix
             ./modules/apps
             ./modules/hardware
