@@ -108,7 +108,7 @@
           } // attrs;
           modules = [
             nixos-hardware/framework/13-inch/11th-gen-intel
-            ./minimum.nix
+            ./minimal.nix
             ./modules/apps
             ./modules/hardware
             ./modules/hyprland
