@@ -1,7 +1,5 @@
 {
-  imports = [ ./hardware-configuration.nix <nixos-hardware/framework/13-inch/11th-gen-intel> ];
-
-  boot.initrd.luks.devices."luks-7d01d45c-2ea5-42d3-a35d-c5457f5492d5".device = "/dev/disk/by-uuid/7d01d45c-2ea5-42d3-a35d-    c5457f5492d5";
+  imports = [ ./hardware-configuration.nix ];
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
