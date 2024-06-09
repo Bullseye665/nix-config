@@ -7,9 +7,10 @@
   ./garbage
 #  ./gnome
   ./hardware
-  ./hyprland
+#  ./hyprland
 #  ./plasma
   ./ssh
   ./tailscale
 #  ./virt
+#  ./xfce
 ]; }
