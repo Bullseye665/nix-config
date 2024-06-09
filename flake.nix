@@ -108,6 +108,7 @@
             inherit system;
           } // attrs;
           modules = [
+            nixos-hardware.nixosModules.framework-11th-gen-intel
             ./minimal.nix
             ./modules/apps
             ./modules/hardware
