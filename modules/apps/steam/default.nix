@@ -6,6 +6,9 @@
       steam-run
       lutris
       wine64
+     # nexusmods-app # https://github.com/NixOS/nixpkgs/pull/270372
+#      steamtinkerlaunch
+#      bottles
 #      winePackages.fonts
 
       (wineWowPackages.full.override {
