@@ -1,5 +1,5 @@
 {
-  description = "Person's hopeful flake.";
+  description = "Person's hopeful recreation of Eriim's nixflake.";
   # nix flake update /home/person/nixflakes/
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -42,10 +42,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#    nix-gaming = {
+#      url = "github:fufexan/nix-gaming";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#    };
 
 #    nurpkgs = {
 #      url = github:nix-community/NUR;
@@ -65,13 +65,13 @@
 #      };
 #    };
 
-   # flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 #    hardware.url = "github:nixos/nixos-hardware";
     };
 
-  outputs = { self, nixpkgs, nixos-hardware, ... }@attrs:
+  outputs = { self, nixpkgs, nixos-hardware, nix-flatpak, ... }@attrs:
     let
       supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -86,14 +86,15 @@
             username = "person";
             hostName = "nixos";
             version = "24.05"; #24.05
-            hyprlandConfig = "desktop";
+            hyprlandConfig = "desktop.nix";
             inherit system;
           } // attrs;
           modules = [
             ./.
             ./modules/hardware/nvidia
             ./modules/plasma
-            ./modules/virt
+#            ./modules/virt
+#            ./modules/virt/lg.nix
           ];
         }; # Person
 
@@ -103,16 +104,14 @@
             username = "laptop";
             hostName = "nixos";
             version = "23.11";
-            hyprlandConfig = "laptop";
+            hyprlandConfig = "laptop.nix";
             inherit system;
           } // attrs;
           modules = [
-            nixos-hardware/framework/13-inch/11th-gen-intel
             ./minimal.nix
             ./modules/apps
             ./modules/hardware
-            ./modules/hyprland
-            ./modules/virt
+            ./modules/xfce
           ];
         }; # Laptop
 
@@ -137,7 +136,7 @@
           specialArgs = {
             username = "live-image";
             hostName = "live";
-            hyprlandConfig = "laptop";
+            hyprlandConfig = "laptop.nix";
             version = "23.11";
             inherit system;
           } // attrs;
