@@ -7,8 +7,8 @@
       enable = true;
       settings = {
           global = {
-            username = "caleb.comstock6@gmail.com";
-            password = "Chevelle76";
+            username = "";
+            password = "";
           };
       };
     };
