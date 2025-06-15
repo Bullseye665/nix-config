@@ -5,7 +5,7 @@ Here are my dots. I hope they work.
 [![Flake Check](https://github.com/Bullseye665/nix-config/actions/workflows/flake_check.yml/badge.svg)](https://github.com/Bullseye665/nix-config/actions/workflows/flake_check.yml)
 
 ```
-Thank you Eriim for the base architecture https://github.com/erictossell/nixflakes/tree/main
+Base architecture https://github.com/erictossell/nixflakes/tree/main
 ```
 
 <details>
