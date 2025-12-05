@@ -1,17 +1,27 @@
 { ... }: {
   imports = [
    # ./1password
-   # ./bitwarden
+    ./blizzard
+    ./bitwarden
     ./browser
+#   ./cachix
+    ./flatpak
+    ./freecad
 #    ./git
+#    ./gitea
 #    ./gpg
-    ./libreoffice
+#    ./jellyfin
+    ./libresuite
+    ./minecraft
+#    ./NexusMods
    # ./obs
    # ./obsidian
     ./steam
     ./thunderbird
     ./spotify
-   # ./transmission
-    ./vscode
+#    ./transmission
+    ./torrent
+#    ./vscode
+    ./webull
   ];
 }

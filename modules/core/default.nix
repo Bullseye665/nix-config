@@ -1,9 +1,8 @@
 { imports = [
-  ./boot/grub.nix
+#  ./boot/grub.nix
 #  ./boot/systemd.nix
   ./nix
-  ./pkgs/full.nix
-#  ./pkgs/minimum.nix
+  ./pkgs
   ./security
   ./terminal
 ]; }

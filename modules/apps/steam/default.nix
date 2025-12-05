@@ -1,32 +1,35 @@
 { pkgs, username, ... }: {
-  # Required to run Windows applications ie World of Warcraft
-  users.users.${username} = {
-    packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
+      gamescope
+      heroic
+      zulu8
+      lutris
+      mangohud
+      protonup-qt
+      r2modman
       steam
       steam-run
-      lutris
       wine64
+      winetricks
      # nexusmods-app # https://github.com/NixOS/nixpkgs/pull/270372
 #      steamtinkerlaunch
 #      bottles
 #      winePackages.fonts
-
-      (wineWowPackages.full.override {
-        wineRelease = "staging";
-        mingwSupport = true;
-       })
-      winetricks
-
-      (lutris.override {
-        extraPkgs = pkgs: [
-          # List package dependencies here
-          wineWowPackages.stable
-          winetricks
-         ];
-      })
     ];
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS =
+      "\${HOME}/.steam/root/compatibilitytools.d";
   };
 
-  programs.steam.enable = true;
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (builtins.parseDrvName pkg.name).name ["steam"];
+  programs = {
+    gamemode.enable = true;
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+  };
 }

@@ -1,15 +1,12 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    transmission_4
-    transmission-gtk
-  ];
+  environment.systemPackages = with pkgs; [ transmission_4-qt ];
 
-  networking = {
-    networkmanager = {
-      firewall = {
-        allowedTCPPorts = [ 57766 ];
-      };
-    };
-  };
+#  networking = {
+#    networkmanager = {
+#      firewall = {
+#        allowedTCPPorts = [ 57766 ];
+#     };
+#    };
+#  };
 }

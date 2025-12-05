@@ -2,14 +2,11 @@
 {
    environment.systemPackages = with pkgs; [
     alacritty     # Terminal
-    btop          # resource monitor
-    lf
-#    nitch         # System fetch
+    lf            # file finder
+    nano
     pavucontrol   # PulseAudio Volume Control
-#    playerctl     # Command-line media player controller
-#    musikcube     # Terminal spotify-like
-    ranger        # terminal flie manager
     ripgrep       # The Silver Searcher + grep ...?
+    toybox
     tty-clock     # clock
   ];
 }

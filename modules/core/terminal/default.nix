@@ -18,12 +18,12 @@
 
   # ---- System Configuration ----
   programs = {
-    htop.enable = true;  # Terminal resource monitor
     mtr.enable = true;   # Network diagnostics tool
   };
 
   environment.systemPackages = with pkgs; [
     brightnessctl # Brightness control
+    btop
     gh
     todoist
     unzip

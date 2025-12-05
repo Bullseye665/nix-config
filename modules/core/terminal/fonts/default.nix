@@ -2,10 +2,10 @@
   fonts = {
     packages = with pkgs; [
       (callPackage (import ./MplusCodeNerdFont) { })
-      nerdfonts
+     # nerd-fonts
       noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
       roboto
     ];
     fontconfig.defaultFonts = {

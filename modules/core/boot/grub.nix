@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    grub2
+  ];
+
   # Bootloader.
   boot = {
     kernelParams = ["nohibernate"];
@@ -19,11 +23,11 @@
 
          extraEntriesBeforeNixOS = true;
       extraEntries = ''
-        menuentry "Reboot" {
-          reboot
-        }
         menuentry "Poweroff" {
           halt
+        }
+        menuentry "Reboot" {
+          reboot
         }
       '';
        };

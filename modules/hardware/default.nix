@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./audio ./bluetooth ./network ./printer ]; }
+{ ... }: { imports = [ ./audio ./bluetooth ./network ]; }

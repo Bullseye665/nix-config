@@ -1,10 +1,14 @@
 { home-manager, username, ... }: {
   home-manager.users.${username} = _: {
-    home.file = {
-      ".config/kitty/kitty.conf".text = ''
-        background #232136
-        background_opacity 1.0
-      '';
+    programs.kitty = {
+        settings = {
+          confirm_os_window_close = 0;
+          dynamic_background_opacity = true;
+          enable_audio_bell = false;
+          window_padding_width = 0;
+          background_opacity = "0.3";
+          background_blur = 2;
+        };
     };
   };
 }

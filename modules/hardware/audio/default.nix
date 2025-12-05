@@ -2,10 +2,8 @@
   users.users.${username} = { extraGroups = [ "audio" ]; };
   # Sound settings
   security.rtkit.enable = true;
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  hardware.pulseaudio.support32Bit = true;
-#  environment.systemPackages = with pkgs; [ pulseaudio ];
+  services.pulseaudio.enable = false;
+  services.pulseaudio.support32Bit = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

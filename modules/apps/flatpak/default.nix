@@ -10,7 +10,7 @@
       "org.duckstation.DuckStation" # PS1
       "net.pcsx2.PCSX2"             # PS2
       "net.rpcs3.RPCS3"             # PS3
-     # "app.xemu.xemu"               # Xbox
+      "app.xemu.xemu"               # Xbox
       "io.mgba.mGBA"                # GBA
       "org.desmume.DeSmuME"         # DS
       "net.kuribo64.melonDS"        # DS
@@ -31,6 +31,9 @@
      # "com.endlessnetwork.passage"               # The Passage
 #      "org.diasurgical.DevilutionX"              # Diablo
       "com.exok.Celeste64"                        # Celeste 64
+      "io.mrarm.mcpelauncher"                     # Bedrock launcher
+
+     # "com.valvesoftware.Steam"
 
     ];
 
