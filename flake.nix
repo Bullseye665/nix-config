@@ -1,9 +1,8 @@
 {
-  description = "Person's hopeful recreation of Eriim's nixflake.";
+  description = "Person's hopeful nixflake.";
   # nix flake update /home/person/nixflakes/
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-#    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -33,10 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    NixOS-WSL = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#    NixOS-WSL = {
+#      url = "github:nix-community/NixOS-WSL";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#    };
+
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,10 +65,11 @@
 #      };
 #    };
 
+    xlibre-overlay.url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-#    hardware.url = "github:nixos/nixos-hardware";
     };
 
   outputs = { self, nixpkgs, nixos-hardware, nix-flatpak, ... }@attrs:
@@ -85,51 +86,70 @@
           specialArgs = {
             username = "person";
             hostName = "nixos";
-            version = "24.05"; #24.05
+            version = "25.11";
             hyprlandConfig = "desktop.nix";
             inherit system;
           } // attrs;
           modules = [
             ./.
-            ./modules/hardware/nvidia
-            ./modules/plasma
-#            ./modules/virt
-#            ./modules/virt/lg.nix
           ];
         }; # Person
 
-        laptop = let system = "x86_64-linux";
+        framework = let system = "x86_64-linux";
         in nixpkgs.lib.nixosSystem {
           specialArgs = {
-            username = "laptop";
+            username = "framework";
             hostName = "nixos";
-            version = "23.11";
+            version = "25.11";
             hyprlandConfig = "laptop.nix";
             inherit system;
           } // attrs;
           modules = [
-            nixos-hardware.nixosModules.framework-11th-gen-intel
-            ./minimal.nix
-            ./modules/apps
-            ./modules/hardware
-            ./modules/xfce
+            ./.
           ];
-        }; # Laptop
+        }; # framework
 
-        personb = let system = "x86_64-linux";
+        nix-master = let system = "x86_64-linux";
         in nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            username = "personb";
-            hostName = "nixos";
-            version = "23.11";
+            username = "nix-master";
+            hostName = "lesser";
+            version = "25.11";
             inherit system;
           } // attrs;
           modules = [
             ./.
-            ./modules/apps/steam
           ];
-        }; # Personb
+        }; # master
+
+        security = let system = "x86_64-linux";
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            username = "security";
+            hostName = "lesser";
+            version = "25.11";
+            hyprlandConfig = "laptop.nix";
+            inherit system;
+          } // attrs;
+          modules = [
+            ./.
+          ];
+        }; # security
+
+        userland = let system = "x86_64-linux";
+        in nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            username = "userland";
+            hostName = "lesser";
+            version = "25.11";
+            hyprlandConfig = "laptop.nix";
+            inherit system;
+          } // attrs;
+          modules = [
+            ./.
+          ];
+        }; # userland
 
         live-image = let system = "x86_64-linux";
         in nixpkgs.lib.nixosSystem {
@@ -138,7 +158,7 @@
             username = "live-image";
             hostName = "live";
             hyprlandConfig = "laptop.nix";
-            version = "23.11";
+            version = "25.11";
             inherit system;
           } // attrs;
           modules = [ ./minimal.nix ];
@@ -149,8 +169,8 @@
           inherit system;
           specialArgs = {
             username = "winix";
-            hostName = "eriim";
-            version = "23.11";
+            hostName = "lesser";
+            version = "25.11";
             inherit system;
           } // attrs;
           modules = [ ./wsl.nix ];
@@ -179,7 +199,7 @@
 
       templates.default = {
         path = ./.;
-        description = "The default template for Eriim's nixflakes.";
+        description = "The default template for Person's nixflakes.";
       }; # templates
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;

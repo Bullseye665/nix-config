@@ -1,9 +1,9 @@
-{ home-manager, ... }: {
+{ home-manager, username, ... }:
+{
   imports = [
     home-manager.nixosModules.home-manager
-    ./assets
     ./hosts
-    ./modules
+    ./modules/${username}.nix
     ./users
   ];
 }
