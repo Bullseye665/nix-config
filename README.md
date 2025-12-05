@@ -1,4 +1,4 @@
-Here are my dots. I hope they work.
+Here are my files. I hope they work.
 
 # Bullseye's Nixflakes
 
