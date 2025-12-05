@@ -4,41 +4,45 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports =
+    [ (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-      kernelModules = [ ];
-    };
-    kernelModules = [ "kvm-amd" ];
-    extraModulePackages = [ ];
-  };
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci_renesas" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/68315290-6c6e-4491-b283-105cb4629ec5";
+    { device = "/dev/disk/by-uuid/85f068a8-8a8a-43a2-a807-a933b0867d7d";
       fsType = "ext4";
     };
-
-#  fileSystems."/run/media/person/Seagate Expansion Drive" =
-#    { device = "/dev/sda2";
-#     fsType = "ntfs3";
-#    };
-
-  fileSystems."/run/media/person/Samsung 980" =
-    { device = "/dev/nvme0n1p1";
-      fsType = "ext4";
-    };
-
-#  fileSystems."Bazzite maybe" =
-#    { device = "";
-#      fsType = "ext4";
-#    };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/48A8-D949";
+    { device = "/dev/disk/by-uuid/06C0-5CB9";
       fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
+
+  fileSystems."/home/person" = {
+    device = "/dev/nvme1n1p3";
+    fsType = "ext4";
+ };
+
+  fileSystems."/run/media/person/MP600" = {
+    device = "/dev/nvme0n1p1";
+    fsType = "ext4";
+  };
+
+  fileSystems."/run/media/person/Seagate" = {
+    device = "/dev/sda3";
+    fsType = "ext4";
+  };
+
+#  fileSystems."/export/Extra" = {
+#    device = "/run/media/person/Extra";
+#    options = [ "bind" ];
+#  };
 
   swapDevices = [ ];
 
