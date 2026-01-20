@@ -12,7 +12,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "";
     };
 
     hyprland = { url = "github:hyprwm/hyprland"; };
@@ -27,10 +26,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    eriixpkgs = {
-      url = "github:erictossell/eriixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+#    eriixpkgs = {
+#      url = "github:erictossell/eriixpkgs";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#    };
 
 #    NixOS-WSL = {
 #      url = "github:nix-community/NixOS-WSL";
@@ -108,6 +107,20 @@
             ./.
           ];
         }; # framework
+
+        incus = let system = "x86_64-linux";
+        in nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            username = "incus";
+            hostName = "lesser";
+            version = "25.11";
+            inherit system;
+          } // attrs;
+          modules = [
+            ./.
+          ];
+        }; # incus
 
         nix-master = let system = "x86_64-linux";
         in nixpkgs.lib.nixosSystem {
@@ -187,6 +200,8 @@
           } // attrs;
           modules = [ ./minimal.nix ];
         }; # virtualis
+  };
+};
 
       }; # configurations
 
