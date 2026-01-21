@@ -200,9 +200,6 @@
           } // attrs;
           modules = [ ./minimal.nix ];
         }; # virtualis
-  };
-};
-
       }; # configurations
 
       devShells = forAllSystems (system:
