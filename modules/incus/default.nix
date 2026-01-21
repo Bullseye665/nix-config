@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, usernaame, ... }: {
   virtualisation.incus = {
     enable = true;
     ui.enable = true;
@@ -17,5 +17,5 @@
         ];
     };
   };
-  users.users.YOUR_USERNAME.extraGroups = ["incus-admin"];
+  users.users.${username}.extraGroups = ["incus-admin"];
 }
