@@ -2,8 +2,9 @@
   imports = [
   ./apps/gitea
   ./core/nix
-  ./core/pkgs/container.nix
-  ./core/security
+  ./core/security/agenix
+  ./core/security/ssh
+  ./core/security/tailscale
   ./garbage
   ];
 }

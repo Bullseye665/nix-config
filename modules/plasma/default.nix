@@ -1,6 +1,7 @@
-{ pkgs, ... }:  # plasma-manager,
+{ pkgs, username, home-manager, inputs, ... }:  # plasma-manager,
 {
   imports = [
+   # ./brightness
     ./config
 #    ./kate
 #    ./partition-manager
@@ -10,20 +11,32 @@
   services.xserver = {
     enable = true;
     displayManager = {
-      sddm.enable = true;
-#      defaultSession = "plasmawayland";
       lightdm.greeters.gtk.enable = false;
     };
+  };
+
+  services = {
+    displayManager = {
+      sddm.enable = true;
+      sddm.wayland.enable = false;
+      defaultSession = "plasmax11";
+    };
     desktopManager = {
-      plasma5.enable = false;
       plasma6.enable = true;
     };
   };
-                  # 5
-  environment.plasma6.excludePackages = with pkgs.libsForQt5; [
+ #libsForQt5
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
     elisa
     oxygen
     khelpcenter
     okular
   ]; #exclude
+
+#  hardware.ckb-next = {
+#    enable = true;
+#    package = pkgs.ckb-next.overrideAttrs (old: {
+#      cmakeFlags = (old.cmakeFlags or [ ]) ++ [ "-DUSE_DBUS_MENU=0" ];
+#    });
+#  };
 }

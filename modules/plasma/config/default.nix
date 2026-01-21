@@ -1,6 +1,6 @@
-{ plasma-manager, username, ... }: {
+{ plasma-manager, home-manager, username, ... }: {
   home-manager.users.${username} = {
-    imports = [ plasma-manager.homeManagerModules.plasma-manager ];
+    imports = [ plasma-manager.homeModules.plasma-manager ];
 
   programs.plasma = {
     enable = true;
@@ -9,9 +9,9 @@
       tooltipDelay = 5;
       theme = "Monochrome";
       colorScheme = "Monochrome";
-      cursorTheme = "Adwaita";
+      cursor.theme = "Adwaita";
       iconTheme = "Breeze Dark";
-      wallpaper = "/home/person/nixflakes/assets/backgrounds/";
+     # wallpaper = "/home/person/nixflakes/assets/backgrounds/";
     };
 
     kwin.titlebarButtons = {

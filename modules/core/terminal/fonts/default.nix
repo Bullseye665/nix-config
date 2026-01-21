@@ -3,6 +3,7 @@
     packages = with pkgs; [
       (callPackage (import ./MplusCodeNerdFont) { })
      # nerd-fonts
+      liberation_ttf
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-color-emoji

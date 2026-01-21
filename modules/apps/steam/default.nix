@@ -3,7 +3,7 @@
       gamescope
       heroic
       zulu8
-      lutris
+      lutris-unwrapped
       mangohud
       protonup-qt
       r2modman

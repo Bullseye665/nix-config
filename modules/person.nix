@@ -15,8 +15,9 @@
   ./hardware/printer
 #  ./hardware/user-interface
 #  ./hyprland
-  ./plasma
+  ./lxqt
+#  ./plasma
 #  ./virt
-#  ./xfce
+ # ./xfce
   ];
 }

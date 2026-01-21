@@ -5,7 +5,7 @@
     ./fonts
     ./foot
     ./kitty
-    ./nvim
+#    ./nvim
     ./starship
     ./tmux
   ];
