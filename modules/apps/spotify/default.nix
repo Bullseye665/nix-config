@@ -1,6 +1,6 @@
 { pkgs, home-manager, username, ... }:
 {
-  environment.systemPackages = with pkgs; [ spotify-qt ];
+  environment.systemPackages = with pkgs; [ spotify ];
 
 #  home-manager.users.${username} = {
 #    services.spotifyd = {

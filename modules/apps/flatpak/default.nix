@@ -3,24 +3,26 @@
 
   services.flatpak = {
     packages = [
-     "org.qbittorrent.qBittorrent"  # Torrent  -- flood
+     "org.qbittorrent.qBittorrent"  # Torrent
      "com.ktechpit.torrhunt"        # Torrent Search
 
-      "com.dosbox_x.DOSBox-X"       # DOS Box
-      "org.duckstation.DuckStation" # PS1
-      "net.pcsx2.PCSX2"             # PS2
-      "net.rpcs3.RPCS3"             # PS3
-      "app.xemu.xemu"               # Xbox
-      "io.mgba.mGBA"                # GBA
-      "org.desmume.DeSmuME"         # DS
-      "net.kuribo64.melonDS"        # DS
-      "io.github.simple64.simple64" # N64
-      "org.DolphinEmu.dolphin-emu"  # Wii and GC
-      "info.cemu.Cemu"              # Wii U
-      "org.ryujinx.Ryujinx"         # Switch
-      "org.libretro.RetroArch"      #
+#      "com.dosbox_x.DOSBox-X"       # DOS Box
+#      "org.duckstation.DuckStation" # PS1
+#      "net.pcsx2.PCSX2"             # PS2
+#      "net.rpcs3.RPCS3"             # PS3
+#      "app.xemu.xemu"               # Xbox
+#      "io.mgba.mGBA"                # GBA
+#      "org.desmume.DeSmuME"         # DS
+#      "net.kuribo64.melonDS"        # DS
+#      "io.github.simple64.simple64" # N64
+#      "org.DolphinEmu.dolphin-emu"  # Wii and GC
+#      "info.cemu.Cemu"              # Wii U
+      "org.ryujinx.Ryujinx"         # Switch 1
+ #     "org.libretro.RetroArch"      #
 
      # "com.heroicgameslauncher.hgl" # Epic, GOG, and AP Launcher
+     # "com.valvesoftware.Steam"
+
 
 #      "com.github.Xenoveritas.abuse"             # Abuse 1995
 #      "io.gitlab.stone_kingdoms.StoneKingdoms"   # Stronghold
@@ -31,9 +33,10 @@
      # "com.endlessnetwork.passage"               # The Passage
 #      "org.diasurgical.DevilutionX"              # Diablo
       "com.exok.Celeste64"                        # Celeste 64
-      "io.mrarm.mcpelauncher"                     # Bedrock launcher
+     # "io.mrarm.mcpelauncher"                     # Bedrock launcher
 
-     # "com.valvesoftware.Steam"
+      "io.github.aandrew_me.ytdn"   # ytDownloader
+#      "io.github.tcobbs.LDView"    # lego 3D viewer
 
     ];
 

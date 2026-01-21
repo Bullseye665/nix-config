@@ -4,7 +4,9 @@
     ./blizzard
     ./bitwarden
     ./browser
-#   ./cachix
+#    ./cachix
+#    ./discord
+    ./emulation
     ./flatpak
     ./freecad
 #    ./git
@@ -20,7 +22,7 @@
     ./thunderbird
     ./spotify
 #    ./transmission
-    ./torrent
+#    ./torrent
 #    ./vscode
     ./webull
   ];
