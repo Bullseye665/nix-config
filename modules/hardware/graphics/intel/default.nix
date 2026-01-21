@@ -10,7 +10,7 @@ services.xserver.videoDrivers = [ "modesetting" ];
       # or intel-media-sdk for QSV // up to 11th gen
 
       intel-vaapi-driver # previously vaapiIntel
-      vaapiVdpau # both wrote in jellyfin setup
+      libva-vdpau-driver # both wrote in jellyfin setup
 
       # Optional (compute / tooling):
       intel-compute-runtime  # OpenCL (NEO) + Level Zero for Arc/Xe
