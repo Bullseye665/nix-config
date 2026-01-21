@@ -2,6 +2,7 @@
   imports = [
 #  ./apps
   ./core/boot/systemd.nix
+  ./core/nix
   ./core/pkgs/container.nix
   ./core/security/agenix
   ./core/security/ssh
