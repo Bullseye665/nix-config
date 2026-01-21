@@ -2,7 +2,7 @@
   virtualisation.incus = {
     enable = true;
     ui.enable = true;
-    agent.enable
+    agent.enable = true;
   };
   networking = {
     nftables.enable = true;
