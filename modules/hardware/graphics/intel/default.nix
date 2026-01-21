@@ -24,5 +24,5 @@ services.xserver.videoDrivers = [ "modesetting" ];
     VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
   };
 
-  users.users.<service>.extraGroups = [ "video" "render" ];
+#  users.users.<service>.extraGroups = [ "video" "render" ];
 }
