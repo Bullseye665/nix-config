@@ -5,6 +5,7 @@
   ./core/nix
   ./core/pkgs/container.nix
   ./core/security/agenix
+  ./core/security/nginx
   ./core/security/ssh
   ./core/security/tailscale
   ./core/security/nfs/server.nix
