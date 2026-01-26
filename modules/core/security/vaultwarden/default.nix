@@ -26,8 +26,9 @@
         SMTP_FROM_NAME = "ezsh.net Bitwarden server";
     };
   };
+
   age.secrets.security = {
-    file = ./secrets/security.age;
+    file = ./home/security/secrets/security.age;
     owner = "vaultwarden";
     group = "vaultwarden";
   };
